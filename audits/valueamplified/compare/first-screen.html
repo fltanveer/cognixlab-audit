@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Value Amplified — proposed first screen (comparison only)</title>
+<!-- Not a page of the site. A single first screen, built to be screenshotted for
+     the before/after slider in the audit report. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy: #011b5b; --purple: #4d13a5; --green: #17a75b; --yellow: #f7b206; --ink-2: #47506b; --line: #dfe2ee; --soft: #f5f4fb; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 400 17px/1.55 'Public Sans', system-ui, sans-serif; color: var(--navy); background: #fff; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  header { border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; height: 76px; gap: 40px; }
+  .bar img { height: 44px; width: auto; }
+  nav { display: flex; gap: 30px; margin-left: auto; font-weight: 500; font-size: 15.5px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: 8px; font: 600 16px/1 'Public Sans', sans-serif; }
+  .btn-p { background: var(--purple); color: #fff; }
+  .btn-s { box-shadow: inset 0 0 0 1.5px var(--navy); }
+  .bar .btn { height: 44px; padding: 0 20px; font-size: 15px; }
+  main { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr); gap: 64px; align-items: center; padding-top: 68px; padding-bottom: 56px; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; font: 600 13px/1 'Public Sans', sans-serif; letter-spacing: 0.09em; text-transform: uppercase; color: var(--purple); }
+  .eyebrow i { display: flex; gap: 3px; } .eyebrow i b { width: 9px; height: 9px; } .eyebrow i b:nth-child(1) { background: var(--purple); } .eyebrow i b:nth-child(2) { background: var(--green); } .eyebrow i b:nth-child(3) { background: var(--yellow); }
+  h1 { margin-top: 22px; font: 700 62px/1.04 'Schibsted Grotesk', sans-serif; letter-spacing: -0.028em; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--purple); }
+  .lede { margin-top: 24px; max-width: 34em; font-size: 19px; line-height: 1.5; color: var(--ink-2); }
+  .actions { display: flex; align-items: center; gap: 14px; margin-top: 32px; }
+  .proof { display: flex; align-items: center; gap: 16px; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .faces { display: flex; } .faces img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #fff; } .faces img + img { margin-left: -12px; }
+  .proof p { font-size: 15.5px; line-height: 1.45; color: var(--ink-2); max-width: 30em; } .proof b { color: var(--navy); font-weight: 600; }
+  aside { background: var(--soft); border-radius: 16px; padding: 30px 30px 14px; }
+  aside h2 { font: 700 13px/1 'Public Sans', sans-serif; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+  aside ul { list-style: none; padding: 0; margin-top: 12px; }
+  aside li a { display: grid; grid-template-columns: 12px 1fr auto; gap: 16px; align-items: start; padding: 18px 0; border-top: 1px solid var(--line); }
+  aside li:first-child a { border-top: 0; }
+  aside li i { width: 12px; height: 12px; margin-top: 7px; }
+  aside b { display: block; font: 700 19px/1.25 'Schibsted Grotesk', sans-serif; letter-spacing: -0.01em; }
+  aside span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
+  aside svg { margin-top: 6px; color: var(--purple); }
+  .strip { border-top: 1px solid var(--line); background: #fff; }
+  .strip .wrap { display: flex; align-items: center; gap: 14px; height: 60px; font-size: 15px; color: var(--ink-2); }
+  .strip .tag { padding: 5px 9px; border-radius: 6px; background: var(--navy); color: #fff; font: 600 11.5px/1 'Public Sans', sans-serif; letter-spacing: 0.07em; text-transform: uppercase; }
+  .strip a { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a href="#"><img src="/valueamplified/brand/logo.svg" alt="Value Amplified" /></a>
+    <nav aria-label="Main"><a href="#">Services</a><a href="#">Research</a><a href="#">Blog</a><a href="#">About</a></nav>
+    <a class="btn btn-p" href="#">Get in touch</a>
+  </div>
+</header>
+<div class="wrap">
+  <main>
+    <div>
+      <p class="eyebrow"><i aria-hidden="true"><b></b><b></b><b></b></i>Research-based advisory for product and technology leaders</p>
+      <h1>AI amplifies what you already do, so <em>choose what it amplifies.</em></h1>
+      <p class="lede">We help organizations and teams rethink how they build and deliver products, so the value AI promises actually reaches your customers and users.</p>
+      <div class="actions"><a class="btn btn-p" href="#">Get in touch</a><a class="btn btn-s" href="#">See how we help</a></div>
+      <div class="proof">
+        <div class="faces"><img src="/valueamplified/brand/dave-west.webp" alt="Dave West" /><img src="/valueamplified/brand/eric-naiburg.webp" alt="Eric Naiburg" /></div>
+        <p><b>Founded by Dave West and Eric Naiburg,</b> who led Scrum.org as CEO and COO for more than a decade, after IBM, Rational Software, Forrester Research and Tasktop.</p>
+      </div>
+    </div>
+    <aside aria-labelledby="ways">
+      <h2 id="ways">Four ways to work with us</h2>
+      <ul>
+        <li><a href="#"><i style="background:var(--purple)"></i><div><b>One-Day Team AI Process Workshop</b><span>One team, one day. A written plan and a 30-day checkpoint.</span></div><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#"><i style="background:var(--green)"></i><div><b>AI-Era Product Operating Model Program</b><span>Leadership-led change, from projects to products.</span></div><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#"><i style="background:var(--yellow)"></i><div><b>Product Marketing Workshops for Growth</b><span>For strong products with flat sales.</span></div><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#"><i style="background:var(--navy)"></i><div><b>Keynotes, Conversations &amp; Facilitation</b><span>Tailored talks, in person or virtual.</span></div><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      </ul>
+    </aside>
+  </main>
+</div>
+<div class="strip"><div class="wrap"><span class="tag">New research</span><span>The Operating Model is the Bottleneck: seven principles for product delivery when AI is in the loop.</span><a href="#">Read the paper</a></div></div>
+</body>
+</html>

@@ -25,6 +25,9 @@ export const ACCESS: Record<string, Grant> = /*ACCESS-BEGIN*/{
   },
   "noelte": {
     "hash": "26fa7ba61e347b1cda2b8f9246ccc28279840dfdf34bdd95e74504213f597924"
+  },
+  "valueamplified": {
+    "hash": "ef8c250ae03d94562eeaf60874eb657a7b442f68e04cf244bf7921322f73f0f6"
   }
 }/*ACCESS-END*/
 

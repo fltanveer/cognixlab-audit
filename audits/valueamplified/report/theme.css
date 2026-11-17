@@ -1,0 +1,23 @@
+/* Value Amplified: the report takes the client's purple as its accent and
+   their yellow (with navy text) for "proposed" markers. */
+:root {
+  --accent: #4d13a5;
+  --accent-soft: #ede7f8;
+  --green: #f7b206;
+  --green-deep: #4d13a5;
+  --tag-bg: #f7b206;
+  --tag-ink: #011b5b;
+  --band: #011b5b;
+  --band-2: #0c2a73;
+  --band-ink: #eceffa;
+  --band-ink-2: #a9b3d6;
+  --band-link: #f9cf5c;
+}
+.band__p { margin: 0 0 20px; font-size: 15px; color: var(--band-ink-2); }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.pair figure { margin: 0; }
+.pair img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1), 0 24px 48px -20px rgb(0 0 0 / 0.7); }
+.pair figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--band-ink-2); }
+.pair figcaption b { color: #fff; font-weight: 600; }
+.pair figcaption a { margin-left: 6px; }
+@media (max-width: 820px) { .pair { grid-template-columns: 1fr; } }
