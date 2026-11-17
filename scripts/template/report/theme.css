@@ -1,0 +1,5 @@
+/* Per-client accent. Defaults live in src/report/report.css. */
+:root {
+  --accent: #0a4871;
+  --accent-soft: #e5eef5;
+}
