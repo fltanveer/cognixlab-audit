@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const accessFile = join(root, 'access.ts')
+const accessFile = join(root, 'middleware.ts')
 const linksFile = join(root, '.links.local.json') // gitignored: the only place tokens are kept
 const RE = /\/\*ACCESS-BEGIN\*\/([\s\S]*?)\/\*ACCESS-END\*\//
 
@@ -22,7 +22,7 @@ export function checkSlug(slug) {
 export async function readAccess() {
   const src = await readFile(accessFile, 'utf8')
   const m = src.match(RE)
-  if (!m) throw new Error('access.ts: ACCESS markers not found')
+  if (!m) throw new Error('middleware.ts: ACCESS markers not found')
   return JSON.parse(m[1])
 }
 

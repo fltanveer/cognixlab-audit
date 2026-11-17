@@ -13,7 +13,6 @@
     "images": "node --env-file-if-exists=.env.local scripts/generate-images.mjs"
   },
   "dependencies": {
-    "@vercel/functions": "^2.0.0",
     "lucide-react": "0.468.0",
     "motion": "^12.23.0",
     "react": "^18.3.1",

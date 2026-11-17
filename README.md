@@ -8,8 +8,7 @@ Private client audits in one Vercel project. Each audit lives at `/<slug>/` and 
 audits/<slug>/            one audit: index.html, report/, optional proposal/ + site/
 public/<slug>/            that audit's screenshots, images, brand files
 src/kit/                  shared UI kit (client-neutral)
-middleware.ts             privacy gate (runs on Vercel)
-access.ts                 slug → token hash (safe to commit)
+middleware.ts             privacy gate (runs on Vercel) + slug → token hash list (safe to commit)
 .links.local.json         the actual links, this machine only (gitignored)
 ```
 
@@ -30,7 +29,7 @@ Access changes take effect on the next deploy. Add `--expires YYYY-MM-DD` to `ne
 
 ## How privacy works
 
-- The client opens `/<slug>/?k=<token>`. The middleware checks the token against the hash in `access.ts`, stores it in an HttpOnly cookie scoped to `/<slug>`, and redirects to the clean URL.
+- The client opens `/<slug>/?k=<token>`. The middleware checks the token against the hash in `middleware.ts`, stores it in an HttpOnly cookie scoped to `/<slug>`, and redirects to the clean URL.
 - Every file under `/<slug>/` (pages, screenshots, scripts, styles) needs that cookie. Without it the response is the same 404 an unknown address gets.
 - The build places anything containing a client's content under `/<slug>/assets/`. Only shared code is public in `/assets/`.
 - Everything is `noindex`; `robots.txt` disallows all crawlers.

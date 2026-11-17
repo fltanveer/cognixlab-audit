@@ -1,8 +1,7 @@
 // Exercises middleware.ts the way Vercel calls it. Run: npm run test:gate
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { ACCESS } from '../access.ts'
-import middleware from '../middleware.ts'
+import middleware, { ACCESS } from '../middleware.ts'
 
 const hash = (t) => createHash('sha256').update(t).digest('hex')
 const A = 'token-for-alpha', B = 'token-for-beta'

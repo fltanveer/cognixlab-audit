@@ -7,8 +7,26 @@
 //   3. Every later request under /<slug>/ (pages, screenshots, scripts) needs that cookie.
 // Anything else gets the same 404 whether or not the audit exists.
 
-import { next } from '@vercel/functions/middleware'
-import { ACCESS } from './access.ts'
+// Self-contained on purpose: no imports, so nothing can fail to bundle on Vercel.
+
+export interface Grant {
+  /** SHA-256 (hex) of the access token. */
+  hash: string
+  /** Optional last day of access, YYYY-MM-DD (UTC). */
+  expires?: string
+}
+
+// Who may open which audit. Managed by `npm run new-audit` and `npm run access`.
+// Holds only SHA-256 hashes of the access tokens, so it is safe to commit.
+// The token itself exists only in the link you send to the client.
+export const ACCESS: Record<string, Grant> = /*ACCESS-BEGIN*/{
+  "hrpivotworks": {
+    "hash": "f72f61a50caa3d3b7974a52f2e036887b8daa8df14d00119703da63c81c6d57f"
+  },
+  "noelte": {
+    "hash": "26fa7ba61e347b1cda2b8f9246ccc28279840dfdf34bdd95e74504213f597924"
+  }
+}/*ACCESS-END*/
 
 export const config = {
   // Everything except the home page, shared client-neutral assets and robots.txt.
@@ -70,5 +88,6 @@ export default async function middleware(request: Request): Promise<Response> {
   // Later visits: cookie scoped to this audit only.
   const cookie = readCookie(request, COOKIE)
   if (!cookie || (await sha256(cookie)) !== grant.hash) return notFound()
-  return next({ headers: PRIVATE_HEADERS })
+  // Continue to the static file; Vercel merges these headers into its response.
+  return new Response(null, { headers: { 'x-middleware-next': '1', ...PRIVATE_HEADERS } })
 }
