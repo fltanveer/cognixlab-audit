@@ -70,11 +70,13 @@ export interface ShellProps {
   findings: Finding[]
   /** Relative link to the proposed page; leave out to hide every link to it. */
   proposal?: string
+  /** Wording for that link: [top bar, contents sidebar]. */
+  proposalLabels?: [string, string]
   footer: [string, string]
   children: ReactNode
 }
 
-export function ReportShell({ brand, brandSub, sections, findings, proposal, footer, children }: ShellProps) {
+export function ReportShell({ brand, brandSub, sections, findings, proposal, proposalLabels = ['Proposed landing page', 'Open the proposed page'], footer, children }: ShellProps) {
   const active = useActiveSection(sections)
   const counts = countBySev(findings)
   return (
@@ -86,7 +88,7 @@ export function ReportShell({ brand, brandSub, sections, findings, proposal, foo
           <div className="top__rail" aria-label={`${findings.length} findings: ${counts.critical} critical, ${counts.major} major, ${counts.minor} minor`} role="img">
             {(Object.keys(counts) as Sev[]).flatMap((s) => Array.from({ length: counts[s] }).map((_, i) => <i key={`${s}${i}`} className={`r-${s}`} />))}
           </div>
-          {proposal && <a className="top__cta" href={proposal}>Proposed landing page <ArrowUpRight /></a>}
+          {proposal && <a className="top__cta" href={proposal}>{proposalLabels[0]} <ArrowUpRight /></a>}
         </div>
       </div>
       <div className="shell">
@@ -102,7 +104,7 @@ export function ReportShell({ brand, brandSub, sections, findings, proposal, foo
               </li>
             ))}
           </ol>
-          {proposal && <a className="index__cta" href={proposal}>Open the proposed page <ArrowUpRight /></a>}
+          {proposal && <a className="index__cta" href={proposal}>{proposalLabels[1]} <ArrowUpRight /></a>}
         </aside>
         <main id="main">{children}</main>
       </div>

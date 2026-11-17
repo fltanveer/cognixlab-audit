@@ -4,7 +4,7 @@ import { resolve, relative, sep } from 'node:path'
 import { existsSync, readdirSync } from 'node:fs'
 
 // Every folder in audits/ is one private audit, served at /<slug>/.
-// A folder may also hold proposal/index.html, served at /<slug>/proposal/.
+// A sub-folder with an index.html is served at /<slug>/<folder>/.
 const auditsDir = resolve(__dirname, 'audits')
 const slugs = readdirSync(auditsDir, { withFileTypes: true })
   .filter((d) => d.isDirectory() && existsSync(resolve(auditsDir, d.name, 'index.html')))
@@ -13,8 +13,12 @@ const slugs = readdirSync(auditsDir, { withFileTypes: true })
 const input: Record<string, string> = { home: resolve(auditsDir, 'index.html') }
 for (const slug of slugs) {
   input[`${slug}__report`] = resolve(auditsDir, slug, 'index.html')
-  const proposal = resolve(auditsDir, slug, 'proposal/index.html')
-  if (existsSync(proposal)) input[`${slug}__proposal`] = proposal
+  // Any sub-folder with its own index.html is another page of that audit:
+  // /<slug>/proposal/, /<slug>/fit/, and so on. All sit behind the same gate.
+  for (const d of readdirSync(resolve(auditsDir, slug), { withFileTypes: true })) {
+    const page = resolve(auditsDir, slug, d.name, 'index.html')
+    if (d.isDirectory() && existsSync(page)) input[`${slug}__${d.name}`] = page
+  }
 }
 
 /** The audit a module belongs to, or null for shared code (kit, node_modules). */

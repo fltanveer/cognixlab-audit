@@ -1,5 +1,5 @@
 import {
-  FindingsSection, Head, MethodSection, PinLegend, PrioritySection, ReportHero, ReportShell,
+  ArrowUpRight, FindingsSection, Head, MethodSection, PinLegend, PrioritySection, ReportHero, ReportShell,
   RolloutSection, ScoreSection, TableSection, WorksSection, countBySev,
 } from '../../../src/report'
 import { CompareStage, EvidenceToday, FullScroll } from '../../../src/report/stages'
@@ -16,10 +16,12 @@ const SECTIONS = [
   ['strategy', '08', 'What the site has to do'],
   ['compare', '09', 'A proposed first screen'],
   ['rollout', '10', 'Rollout'],
+  ['fit', '11', 'Where Cognixlab fits'],
 ] as const
 
 const counts = countBySev(FINDINGS)
 const base = { slug: SLUG, url: URL }
+const FIT = 'fit/'
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
       brandSub="audit"
       sections={SECTIONS}
       findings={FINDINGS}
+      proposal={FIT}
+      proposalLabels={['Where Cognixlab fits', 'See where Cognixlab fits']}
       footer={[`UX, content and conversion audit of ${URL}.`, `${DATE} · ${FINDINGS.length} findings · ${counts.critical} critical`]}
     >
       <ReportHero
@@ -135,6 +139,21 @@ export default function App() {
         sub="The first block needs no design work and can be done in the site builder in a day."
         note={<><b>What this report did not check.</b> Timings are from single lab loads on a fast connection, not field data from real visitors; treat them as indicative. Forms were not submitted, so delivery, confirmation messages and spam protection were not tested. Behaviour after accepting cookies, the newsletter emails and analytics were not inspected. Seven pages in the sitemap (six articles and one research paper) were not reviewed individually. Contrast was calculated for the brand colour pairs, not for every text element. No testing was done with assistive technology, on Safari or Firefox, or with users. The proposed first screen is a single static image for comparison; it is not a built page.</>}
       />
+
+      <section id="fit" className="sec band">
+        <Head n="11" title="Where Cognixlab fits" sub="This audit is about the website. The larger opportunity is in the work itself: Value Amplified helps leaders choose what AI amplifies, and Cognixlab builds and measures it." />
+        <div className="fit">
+          <a className="fit__shot" href={FIT}>
+            <img src={`/${SLUG}/shots/fit-desktop.webp`} alt="First screen of the page showing where Cognixlab fits alongside Value Amplified's services" width={1440} height={900} loading="lazy" />
+          </a>
+          <div className="band__copy">
+            <p className="band__kicker mono">A separate page</p>
+            <h3>After the workshop, someone has to build the bet.</h3>
+            <p>A team leaves a Value Amplified workshop with three to five bets and a 30-day checkpoint. The page sets out, service by service, what Cognixlab would add, with working demos on sample data and the first step we would propose.</p>
+            <a className="btn btn--green" href={FIT} style={{ marginTop: 20 }}>See where Cognixlab fits <ArrowUpRight /></a>
+          </div>
+        </div>
+      </section>
     </ReportShell>
   )
 }
