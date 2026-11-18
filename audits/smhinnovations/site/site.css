@@ -84,7 +84,17 @@ address { font-style: normal; }
 @media (max-width: 400px) { .header-phone span { font-size: 0.9375rem; } .logo img { width: 128px; } }
 
 /* hero */
-.hero { padding: 72px 0 0; }
+.hero { position: relative; padding: 72px 0 0; overflow: hidden; isolation: isolate; }
+.hero > .wrap { position: relative; z-index: 1; }
+/* Waves: three wide layers drifting at different speeds, fading out towards the headline. */
+.hero-waves { position: absolute; inset: auto 0 0 0; height: min(78%, 560px); z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 46%); mask-image: linear-gradient(to bottom, transparent 0, #000 46%); }
+.wave { position: absolute; left: 0; bottom: 0; width: 200%; height: 100%; will-change: transform; animation: wave-drift linear infinite; }
+.wave path { fill: currentColor; }
+.wave.w1 { color: rgb(0 196 227 / 0.13); animation-duration: 46s; }
+.wave.w2 { color: rgb(11 92 107 / 0.09); animation-duration: 64s; animation-direction: reverse; }
+.wave.w3 { color: rgb(0 196 227 / 0.16); animation-duration: 34s; }
+@keyframes wave-drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 56px; align-items: stretch; }
 .hero h1 { font-size: clamp(2.5rem, 5.200vw, 4.375rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1; max-width: 12em; }
 .standfirst { margin-top: 24px; max-width: 36em; font-size: 1.1875rem; line-height: 1.5; color: var(--ink-2); }
@@ -110,7 +120,7 @@ address { font-style: normal; }
 .roster-foot { margin-top: 8px; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.12); font-size: 0.9375rem; line-height: 1.5; color: #b9cfd4; }
 .roster-foot a { color: #fff; font-weight: 600; white-space: nowrap; }
 .roster-foot a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
-.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; padding: 0 24px; border-radius: var(--r) var(--r) 0 0; background: rgb(255 255 255 / 0.82); box-shadow: 0 0 0 1px var(--line); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .facts > div { padding: 20px 24px 22px 0; }
 .facts > div + div { padding-left: 24px; border-left: 1px solid var(--line); }
 .facts dt { font-size: 0.875rem; color: var(--ink-3); }

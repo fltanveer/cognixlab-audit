@@ -57,9 +57,39 @@ function Header() {
 /* ───────────────────────── Hero ───────────────────────── */
 
 
+/** One wave period is 720 units, so sliding a layer left by half its width loops without a seam. */
+function wavePath(mid: number, amp: number, phase: number): string {
+  const seg = 720
+  let d = `M${-phase},${mid}`
+  for (let x = -phase; x < 2880 + seg; x += seg) {
+    d += ` C${x + seg / 3},${mid - amp} ${x + (2 * seg) / 3},${mid + amp} ${x + seg},${mid}`
+  }
+  return `${d} V400 H${-phase} Z`
+}
+
+const WAVES = [
+  { mid: 150, amp: 70, phase: 0, cls: 'w1' },
+  { mid: 205, amp: 54, phase: 240, cls: 'w2' },
+  { mid: 262, amp: 40, phase: 480, cls: 'w3' },
+]
+
+/** Decorative: slow layered waves in the brand cyan and teal behind the first screen. Still under reduced motion. */
+function HeroWaves() {
+  return (
+    <div className="hero-waves" aria-hidden="true">
+      {WAVES.map((w) => (
+        <svg key={w.cls} className={`wave ${w.cls}`} viewBox="0 0 2880 400" preserveAspectRatio="none" focusable="false">
+          <path d={wavePath(w.mid, w.amp, w.phase)} />
+        </svg>
+      ))}
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-h">
+      <HeroWaves />
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <h1 id="hero-h">{HERO.h1}</h1>
