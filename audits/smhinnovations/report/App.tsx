@@ -10,7 +10,7 @@ import { LinkedInDemo } from './LinkedInDemo'
 const PROPOSAL = 'proposal/'
 const HAS_PROPOSAL = ANNOTATIONS.length > 0
 /** Set to false to hold back every link to the proposed page. */
-const SHOW_PROPOSAL_LINKS = true
+const SHOW_PROPOSAL_LINKS = false
 const LINKS = HAS_PROPOSAL && SHOW_PROPOSAL_LINKS
 
 const SECTIONS = [
