@@ -47,9 +47,8 @@ export const SITUATIONS: Situation[] = [
     title: 'A people decision you can’t get wrong',
     body: 'Conflict between leaders, a struggling executive, a difficult termination. We help you understand your options, see the consequences before you act, and take practical action while treating everyone involved with professionalism and dignity.',
     services: [
-      { name: 'Leadership & People Risk Advisory', line: 'Anticipate the human and organizational consequences of a decision before you make it.' },
-      { name: 'Leadership Development & Complex People Situations', line: 'Support through sensitive employee matters, difficult transitions and high-stakes calls.' },
-      { name: 'Compliance & Workforce Risk', line: 'Find the gaps in employment practices and policies before they become costly problems.' },
+      { name: 'Business & Leadership Advisory', line: 'A trusted, independent sounding board when decisions get complicated, and help turning them into action.' },
+      { name: 'Leadership Coaching & Organizational Change', line: 'Practical coaching and hands-on support so leaders become more effective and teams work better together.' },
     ],
   },
   {
@@ -57,25 +56,25 @@ export const SITUATIONS: Situation[] = [
     title: 'Senior People leadership, without a full-time hire',
     body: 'Sometimes the business needs an experienced Chief People Officer for a season: through growth, a restructuring or a leadership transition. Prue steps in, sets direction, and builds what the next person will inherit.',
     services: [
-      { name: 'Fractional & Interim Chief People Officer Leadership', line: 'Executive People leadership when you need strategic guidance or immediate cover, without a permanent executive hire.' },
+      { name: 'People & Workforce Advisory', line: 'Experienced help with hiring, workforce planning, restructuring and sensitive employee situations, including fractional or interim Chief People Officer support.' },
     ],
   },
   {
     id: 'ai',
     title: 'AI is changing the work faster than the plan',
-    body: 'Start with the work, not the technology. We look at how AI is already affecting roles, hiring and performance decisions, find where accountability is unclear, and help you introduce it without losing the judgment a good business depends on.',
+    body: 'Start with the work, not the technology. We look at how the work really gets done, find the repetitive tasks and the unclear accountability, and help you introduce AI without losing the judgment a good business depends on.',
     services: [
-      { name: 'AI People Risk & Organizational Readiness', line: 'Assess how AI is affecting workflows, roles, skills and workforce decisions, and where the gaps are.' },
-      { name: 'AI Governance & Change Management', line: 'Clear ownership, responsible practices and practical safeguards as AI becomes part of everyday work.' },
+      { name: 'Business & Workforce Intelligence', line: 'Confidential employee conversations and workflow assessments that show what is really happening inside the business.' },
+      { name: 'AI & Workflow Transformation', line: 'Identify repetitive work, improve processes, and introduce practical AI and automation with qualified technology specialists.' },
     ],
   },
   {
     id: 'change',
     title: 'The business is growing, restructuring or changing hands',
-    body: 'The structure that got you here won’t carry the next stage. We align workforce plans, organization and leadership capability with where the business is going, including the people who work across borders.',
+    body: 'Investment, a merger, succession, or simply a stage the old structure cannot carry. We help owners, investors and leadership teams through the people decisions that affect performance and value, including teams that work across borders.',
     services: [
-      { name: 'Workforce Strategy & Organizational Transformation', line: 'Workforce plans, structures and leadership capability aligned with business priorities.' },
-      { name: 'Immigration & Global Workforce', line: 'Understand workforce dependencies and coordinate global mobility matters alongside qualified legal counsel.' },
+      { name: 'Business Ownership, Investment & Transition Advisory', line: 'Support for founders, investors and family enterprises through investment, mergers and acquisitions, and succession.' },
+      { name: 'Employment & Global Workforce Advisory', line: 'Workforce compliance, global team coordination and immigration-related planning, working alongside qualified legal specialists.' },
     ],
   },
 ]
