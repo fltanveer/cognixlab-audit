@@ -1,16 +1,14 @@
 // What the report says about the proposed landing page. Strings are quoted
 // from the built page (site/data.ts) so the copy deck matches it exactly.
 
+// Only what the first screen shows. The report presents a glimpse, not a finished page.
 export const ANNOTATIONS: [string, string][] = [
   ['The first line says what the firm is.', '"Physician-led locum tenens and medical staffing." Static text, a real `h1`, and the phrase the firm already uses everywhere except its website.'],
-  ['Two doors on the first screen.', '"I need coverage" for hospitals and facilities, "I\'m a provider" for physicians, APPs and CRNAs. Each leads to its own section and its own short form.'],
+  ['Two doors on the first screen.', '"I need coverage" for hospitals and facilities, "I\'m a provider" for physicians, APPs and CRNAs.'],
   ['The phone number never leaves.', 'It sits in the header on every screen size. On a phone the two actions move to a bar at the bottom, so calling or enquiring is always one tap.'],
-  ['The physicians are on the first screen.', 'A panel beside the claim names the five physicians, each with a photograph and a line from their biography. Further down, a static grid shows all seven people on the live homepage. No carousel.'],
-  ['Facts a hospital can check.', 'Led by five physicians, founded 2022, based in Pooler, Georgia, member of NALTO. Nothing else is claimed.'],
-  ['How it works, in the firm\'s own words.', 'Listen, match, credential, schedule: taken from its LinkedIn posts, including that client facilities handle primary source verification.'],
-  ['Open roles has a place.', 'A section built to hold a live feed, marked "to be connected" rather than filled with invented listings. Recent searches are named and labelled as not current openings.'],
-  ['Readable buttons, optional consent.', 'Button fills are deep teal and navy with white labels; cyan carries dark text. Message consent is a separate, unticked checkbox at normal size.'],
-  ['What is not known is marked.', 'One "to be supplied" slot asks for a reference from a facility leader or a placed provider. No client, quotation or number has been invented.'],
+  ['The physicians are named beside the claim.', 'A panel lists the five physicians, each with a photograph and a line from their published biography.'],
+  ['Readable buttons.', 'Button fills are deep teal and navy with white labels; cyan carries dark text.'],
+  ['A background that belongs to the business.', 'A faint shift rota in which open shifts fill in, in place of the template\'s hexagons.'],
 ]
 
 export const COPY_DECK: [string, string, string?][] = [

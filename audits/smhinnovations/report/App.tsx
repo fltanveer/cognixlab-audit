@@ -1,10 +1,10 @@
 import {
-  ArrowUpRight, CopyDeckSection, FindingsSection, Head, MethodSection, PinLegend, PrioritySection,
+  ArrowUpRight, FindingsSection, Head, MethodSection, PinLegend, PrioritySection,
   ReportHero, ReportShell, RolloutSection, ScoreSection, TableSection, WorksSection, countBySev, rich,
 } from '../../../src/report'
 import { CompareStage, DevicePair, EvidenceToday, FullScroll } from '../../../src/report/stages'
 import { DATE, FINDINGS, FIRST_FIVE, FRAMEWORKS, LINKEDIN_ROWS, LIVE_PINS, MOBILE_PINS, ROLLOUT, SCORES, SCORE_TOTAL, SITEMAP, SLUG, URL, WORKS } from './content'
-import { ANNOTATIONS, COPY_DECK } from './proposal'
+import { ANNOTATIONS } from './proposal'
 import { LinkedInDemo } from './LinkedInDemo'
 
 const PROPOSAL = 'proposal/'
@@ -22,8 +22,8 @@ const SECTIONS = [
   ['works', '06', 'What works'],
   ['priority', '07', 'Do these five first'],
   ['strategy', '08', 'What the site has to do'],
-  ...(HAS_PROPOSAL ? ([['rebuild', '09', 'The proposed landing page'], ['copy', '10', 'Copy, written']] as const) : []),
-  ['rollout', HAS_PROPOSAL ? '11' : '09', 'Rollout'],
+  ...(HAS_PROPOSAL ? ([['rebuild', '09', 'A first look at the direction']] as const) : []),
+  ['rollout', HAS_PROPOSAL ? '10' : '09', 'Rollout'],
 ] as const
 
 const counts = countBySev(FINDINGS)
@@ -33,7 +33,7 @@ export default function App() {
   return (
     <ReportShell
       brand="SMH Innovations"
-      brandSub="audit & redesign"
+      brandSub="audit"
       sections={SECTIONS}
       findings={FINDINGS}
       proposal={LINKS ? PROPOSAL : undefined}
@@ -43,7 +43,7 @@ export default function App() {
         eyebrow={`UX, content & conversion audit · ${DATE}`}
         title="Physicians run this firm. The website never says so."
         lede={<>
-          SMH Innovations is a physician-led locum tenens and medical staffing company with an active, well-written LinkedIn page. Its website is a medical-clinic template whose headline does not name the service, offers hospitals and clinicians the same generic form, and shows no open roles. The LinkedIn page that does the real work links to a web address with four w's, which does not exist. This report sets out {FINDINGS.length} findings with the evidence for each, and proposes a landing page with the copy written.
+          SMH Innovations is a physician-led locum tenens and medical staffing company with an active, well-written LinkedIn page. Its website is a medical-clinic template whose headline does not name the service, offers hospitals and clinicians the same generic form, and shows no open roles. The LinkedIn page that does the real work links to a web address with four w's, which does not exist. This report sets out {FINDINGS.length} findings with the evidence for each, and ends with a first look at where the fixes lead.
         </>}
         actions={<>
           {LINKS && <a className="btn btn--primary" href={PROPOSAL}>Open the proposed landing page <ArrowUpRight /></a>}
@@ -117,7 +117,7 @@ export default function App() {
         note={<><b>What the posts tell us about the business.</b> The firm recruits providers, matches them to shifts and coordinates credentialing with client facilities, whose own teams handle primary source verification. It uses a partner platform, OnCall, for recruitment, credentialing, scheduling and payroll. It sponsored the LocumSmart Education Conference in Nashville in November 2026. It describes itself as “a close-knit team” where “every provider and facility gets to know us by name”. None of this is on the website, and all of it should be.</>}
       />
 
-      <WorksSection id="works" n="06" sub="The substance is there. The proposed page is built from these." items={WORKS} />
+      <WorksSection id="works" n="06" sub="The substance is there. Any redesign should be built from these." items={WORKS} />
 
       <PrioritySection id="priority" n="07" title="Do these five first" sub="Ordered by business impact per hour spent, not by severity label. The first takes a minute." items={FIRST_FIVE} />
 
@@ -142,8 +142,8 @@ export default function App() {
         </div>
         <p className="note"><b>Why “physician-led” goes first.</b> Hospitals and clinicians share one worry about staffing agencies: that the recruiter has never worked a shift. This firm's owners have. That single fact answers both audiences, and it is currently absent from the site.</p>
 
-        <h3 className="sub">Site structure, after the landing page</h3>
-        <p className="head__sub">Six pages, each with one job. The landing page ships first.</p>
+        <h3 className="sub">Site structure</h3>
+        <p className="head__sub">Six pages, each with one job. The homepage comes first.</p>
         <div className="sitemap">
           {SITEMAP.map(([name, d, job, hub]) => (
             <div key={name} className={`sm ${hub ? 'sm--hub' : ''}`}>
@@ -157,35 +157,23 @@ export default function App() {
 
       {HAS_PROPOSAL && (
         <section id="rebuild" className="sec band">
-          <Head n="09" title="The proposed landing page" sub={<>Built, not drawn: a working page with the firm's own logo, people and words. Drag the divider to compare the first screen.{LINKS && <> <a href={PROPOSAL} className="band__link">Open it full size →</a></>}</>} />
+          <Head n="09" title="A first look at the proposed direction" sub="One screen, to show where the fixes lead: the current homepage on the left, a proposed first screen on the right, using the firm's own logo, people and words. Drag the divider to compare." />
           <div className="stage-frame"><CompareStage {...base} /></div>
           <div className="band__split band__split--rev">
-            <div className="stage-frame"><DevicePair {...base} desktop="proposal-desktop" mobile="proposal-mobile" desktopAlt="Proposed homepage at 1440 px" mobileAlt="Proposed homepage on a 390 px phone" /></div>
+            <div className="stage-frame"><DevicePair {...base} desktop="proposal-desktop" mobile="proposal-mobile" desktopAlt="Proposed first screen at 1440 px" mobileAlt="Proposed first screen on a 390 px phone" /></div>
           </div>
           <ol className="annot">
             {ANNOTATIONS.map(([a, b], i) => (
               <li key={a}><span className="mono">{i + 1}</span><p><b>{a}</b> {rich(b)}</p></li>
             ))}
           </ol>
-          <h3 className="band__h3">The whole page, top to bottom</h3>
-          <div className="stage-frame"><FullScroll {...base} /></div>
-          {LINKS && (
-            <div className="band__cta">
-              <a className="btn btn--green" href={PROPOSAL}>Open the proposed landing page <ArrowUpRight /></a>
-              <span>Desktop and phone. The phone and email links are real; the two forms show a confirmation and send nothing.</span>
-            </div>
-          )}
         </section>
       )}
 
-      {HAS_PROPOSAL && (
-        <CopyDeckSection id="copy" n="10" rows={COPY_DECK} sub="The strings for the page, ready to paste. Anything the firm has to confirm or supply is flagged. Nothing here invents a client, a number or a quotation." />
-      )}
-
       <RolloutSection
-        id="rollout" n={HAS_PROPOSAL ? '11' : '09'} steps={ROLLOUT}
+        id="rollout" n={HAS_PROPOSAL ? '10' : '09'} steps={ROLLOUT}
         sub="The first block needs no design work and removes the fault that costs real enquiries."
-        note={<><b>What this report did not check.</b> Timings are from single lab loads on a fast connection, not field data; treat them as indicative. The contact form was not submitted, so delivery and confirmation were not tested. LinkedIn was read logged out, so employee details, the full post history and analytics reflect only the public view; follower and reaction counts are as shown on the day. Job-board listings were found through web search and were not verified with the firm. Whether the eighth profile page should still exist is a question for the firm; the report notes only that it is live. Nothing here is legal advice on tracking or message consent. No testing was done with assistive technology, on Safari or Firefox, or with users. Images on the proposed page marked as generated were made with Gemini for this proposal and should be replaced or approved before launch.</>}
+        note={<><b>What this report did not check.</b> Timings are from single lab loads on a fast connection, not field data; treat them as indicative. The contact form was not submitted, so delivery and confirmation were not tested. LinkedIn was read logged out, so employee details, the full post history and analytics reflect only the public view; follower and reaction counts are as shown on the day. Job-board listings were found through web search and were not verified with the firm. Whether the eighth profile page should still exist is a question for the firm; the report notes only that it is live. Nothing here is legal advice on tracking or message consent. No testing was done with assistive technology, on Safari or Firefox, or with users. The proposed first screen is a direction for discussion, not a finished design.</>}
       />
     </ReportShell>
   )

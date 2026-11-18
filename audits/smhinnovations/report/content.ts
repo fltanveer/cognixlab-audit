@@ -35,7 +35,7 @@ export const FINDINGS: Finding[] = [
     title: 'The site is a medical-clinic template with the clinic still showing',
     observed: 'Section anchors are `#department`, `#doctors` and `#X-ray`. The three service images are files named `crutches.png`, `xray.png` and `pulmonary.png`; the visible one is a stock photograph of a doctor with a patient. The services are headed "Areas of Practice", and a card titled "For The Patients" promises "heightened patient contentment", though the firm does not treat patients. When the page loads, the tab highlighted is "Locum Tenens Staffing" while the panel shown is "We Staff Physicians". Three of the four social icons link to `#`. The footer says "Copyright 2023" and credits the template designer. The "U.S. Clinician Employment Trends" link opens a 2021 PDF.',
     impact: 'Visitors from healthcare recognise a clinic template immediately. It reads as a firm that has not looked at its own site, which is the opposite of the attention to detail its LinkedIn posts promise.',
-    fix: 'Rebuild the page around staffing: remove the patient card, rename the sections, replace the stock clinic photograph, fix the default tab, remove the dead icons, and update the year and the report. The proposed page in section 09 shows the result.',
+    fix: 'Rebuild the page around staffing: remove the patient card, rename the sections, replace the stock clinic photograph, fix the default tab, remove the dead icons, and update the year and the report. Section 09 shows a first look at the result.',
   },
   {
     id: 'F-05', sev: 'major', fw: 'Trust & credibility · Conversion',
@@ -188,7 +188,7 @@ export const SITEMAP = [
 export const ROLLOUT = [
   ['Today — stop the leak.', 'Correct the LinkedIn website field. Check the same field on every job board. Add a meta description and title to the homepage.'],
   ['This week — on the existing site.', 'Static headline. Tap-to-call on phones. Readable buttons. Remove the patient card, dead icons, old PDF and stale copyright. Decide on the eighth profile page. Decide on the visitor tracker and disclose it.'],
-  ['Weeks two and three — rebuild the homepage.', 'Build the proposed page in section 09: two doors, two short forms, the team as a grid, how it works in the firm\'s own words, the facts a hospital can check.'],
+  ['Weeks two and three — rebuild the homepage.', 'Design and build a new homepage in the direction previewed in section 09: two doors, two short forms, the team as a grid, how it works in the firm\'s own words, the facts a hospital can check.'],
   ['Weeks three to five — give each audience a page.', 'For facilities, for providers, open roles connected to the platform, and a proper profile for each physician. Sitemap, robots file, structured data.'],
   ['Ongoing — collect the proof.', 'After each assignment ask the facility contact and the provider for one sentence. Keep posting on LinkedIn as now, and link each post to the relevant page on the site.'],
 ] as const
