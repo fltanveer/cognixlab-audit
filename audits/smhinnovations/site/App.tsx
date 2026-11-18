@@ -57,31 +57,44 @@ function Header() {
 /* ───────────────────────── Hero ───────────────────────── */
 
 
-/** One wave period is 720 units, so sliding a layer left by half its width loops without a seam. */
-function wavePath(mid: number, amp: number, phase: number): string {
-  const seg = 720
-  let d = `M${-phase},${mid}`
-  for (let x = -phase; x < 2880 + seg; x += seg) {
-    d += ` C${x + seg / 3},${mid - amp} ${x + (2 * seg) / 3},${mid + amp} ${x + seg},${mid}`
+/** Heartbeat trace: a flat baseline with one beat every 240 units, across a 1440-wide strip. */
+function pulsePath(): string {
+  let d = 'M0,50'
+  for (let x = 0; x < 1440; x += 240) {
+    d += ` L${x + 96},50 l8,-7 l8,7 l10,0 l6,-36 l9,60 l7,-24 l14,0 l10,-11 l12,11`
   }
-  return `${d} V400 H${-phase} Z`
+  return `${d} L1440,50`
 }
 
-const WAVES = [
-  { mid: 150, amp: 70, phase: 0, cls: 'w1' },
-  { mid: 205, amp: 54, phase: 240, cls: 'w2' },
-  { mid: 262, amp: 40, phase: 480, cls: 'w3' },
-]
+const ROTA_ROWS = 26
+const ROTA_COLS = 36
+/** A fixed pattern, so the page renders the same every time: most shifts covered, some open. */
+const ROTA = Array.from({ length: ROTA_ROWS * ROTA_COLS }, (_, i) => {
+  // Integer hash: scatters the open shifts evenly instead of lining them up in columns.
+  let h = Math.imul(i + 1, 2654435761) >>> 0
+  h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0
+  const n = ((h ^ (h >>> 13)) >>> 0) % 100
+  return n < 5 ? 'gap' : n < 22 ? 'off' : 'on'
+})
 
-/** Decorative: slow layered waves in the brand cyan and teal behind the first screen. Still under reduced motion. */
-function HeroWaves() {
+/**
+ * Decorative background for the first screen: a shift rota in which open shifts
+ * fill in one after another, under a heartbeat trace. It is what the firm does:
+ * closing gaps in a schedule. Under reduced motion every shift is simply shown covered.
+ */
+function HeroCoverage() {
+  let gap = 0
   return (
-    <div className="hero-waves" aria-hidden="true">
-      {WAVES.map((w) => (
-        <svg key={w.cls} className={`wave ${w.cls}`} viewBox="0 0 2880 400" preserveAspectRatio="none" focusable="false">
-          <path d={wavePath(w.mid, w.amp, w.phase)} />
-        </svg>
-      ))}
+    <div className="hero-cover" aria-hidden="true">
+      <div className="rota">
+        {ROTA.map((kind, i) => (
+          <i key={i} className={`shift shift-${kind}`} style={kind === 'gap' ? { animationDelay: `${((gap++ * 3.7) % 11).toFixed(1)}s` } : undefined} />
+        ))}
+      </div>
+      <svg className="pulse" viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false">
+        <path className="pulse-base" d={pulsePath()} />
+        <path className="pulse-run" d={pulsePath()} pathLength={1000} />
+      </svg>
     </div>
   )
 }
@@ -89,7 +102,7 @@ function HeroWaves() {
 function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-h">
-      <HeroWaves />
+      <HeroCoverage />
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <h1 id="hero-h">{HERO.h1}</h1>
