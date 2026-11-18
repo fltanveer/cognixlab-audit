@@ -5,7 +5,7 @@ export const ANNOTATIONS: [string, string][] = [
   ['The first line says what the firm is.', '"Physician-led locum tenens and medical staffing." Static text, a real `h1`, and the phrase the firm already uses everywhere except its website.'],
   ['Two doors on the first screen.', '"I need coverage" for hospitals and facilities, "I\'m a provider" for physicians, APPs and CRNAs. Each leads to its own section and its own short form.'],
   ['The phone number never leaves.', 'It sits in the header on every screen size. On a phone the two actions move to a bar at the bottom, so calling or enquiring is always one tap.'],
-  ['The physicians are on the first screen.', 'Real portraits beside the claim, then a static grid of the seven people the live homepage shows, each with a role and a line of biography. No carousel.'],
+  ['The physicians are on the first screen.', 'A panel beside the claim names the five physicians, each with a photograph and a line from their biography. Further down, a static grid shows all seven people on the live homepage. No carousel.'],
   ['Facts a hospital can check.', 'Led by five physicians, founded 2022, based in Pooler, Georgia, member of NALTO. Nothing else is claimed.'],
   ['How it works, in the firm\'s own words.', 'Listen, match, credential, schedule: taken from its LinkedIn posts, including that client facilities handle primary source verification.'],
   ['Open roles has a place.', 'A section built to hold a live feed, marked "to be connected" rather than filled with invented listings. Recent searches are named and labelled as not current openings.'],

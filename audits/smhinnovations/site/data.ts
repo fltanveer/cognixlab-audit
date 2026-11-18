@@ -35,6 +35,20 @@ export const HERO = {
     ['Member of', 'NALTO'],
   ],
   portraitCaption: 'The team behind SMH Innovations',
+  // First-screen roster: the five physicians, each with a line drawn from their published bio.
+  roster: {
+    kicker: 'Who you will talk to',
+    title: 'Five physicians run this company.',
+    people: [
+      ['spiro-mavromates', 'Managing Director · Internal medicine, hospital medicine leadership'],
+      ['jerome-tuitt', 'Physician Partner · Board-certified internal medicine'],
+      ['nicholas-mavromates', 'Physician Partner · Hospitalist, level 1 trauma experience'],
+      ['craig-novack', 'Physician Partner · Medical director, born and raised in Savannah'],
+      ['milan-podrecca', 'Physician Partner · Internal medicine, procedural skillset'],
+    ],
+    foot: 'With a business development lead and a travel coordinator beside them.',
+    link: 'Meet the whole team',
+  },
 } as const
 
 export const STAFF = {

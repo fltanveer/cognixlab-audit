@@ -56,7 +56,6 @@ function Header() {
 
 /* ───────────────────────── Hero ───────────────────────── */
 
-const HERO_FACES = ['spiro-mavromates', 'jerome-tuitt', 'nicholas-mavromates', 'craig-novack', 'milan-podrecca', 'jane-foley']
 
 function Hero() {
   return (
@@ -79,15 +78,25 @@ function Hero() {
             Or call <a href={PHONE.href}>{PHONE.label}</a>, or write to <a href={EMAIL.href}>{EMAIL.label}</a>.
           </p>
         </div>
-        <figure className="hero-faces">
-          <div className="faces-grid">
-            {HERO_FACES.map((slug) => {
+        <aside className="roster" aria-labelledby="roster-h">
+          <p className="roster-kicker">{HERO.roster.kicker}</p>
+          <h2 id="roster-h" className="roster-title">{HERO.roster.title}</h2>
+          <ul className="roster-list">
+            {HERO.roster.people.map(([slug, line]) => {
               const p = TEAM.find((t) => t.slug === slug)!
-              return <img key={slug} src={`${BRAND}/${slug}.webp`} alt={p.name} width="270" height="348" />
+              return (
+                <li key={slug}>
+                  <img src={`${BRAND}/${slug}.webp`} alt="" width="270" height="348" />
+                  <div>
+                    <p className="roster-name">{p.name}</p>
+                    <p className="roster-line">{line}</p>
+                  </div>
+                </li>
+              )
             })}
-          </div>
-          <figcaption>{HERO.portraitCaption}. <a href="#team">Meet them</a></figcaption>
-        </figure>
+          </ul>
+          <p className="roster-foot">{HERO.roster.foot} <a href="#team">{HERO.roster.link}</a></p>
+        </aside>
       </div>
       <div className="wrap">
         <dl className="facts">

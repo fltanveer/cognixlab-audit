@@ -85,7 +85,7 @@ address { font-style: normal; }
 
 /* hero */
 .hero { padding: 72px 0 0; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 64px; align-items: start; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 56px; align-items: stretch; }
 .hero h1 { font-size: clamp(2.5rem, 5.200vw, 4.375rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1; max-width: 12em; }
 .standfirst { margin-top: 24px; max-width: 36em; font-size: 1.1875rem; line-height: 1.5; color: var(--ink-2); }
 .doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
@@ -98,10 +98,18 @@ address { font-style: normal; }
 .door .btn { margin-top: auto; }
 .hero-contact { margin-top: 20px; font-size: 1rem; color: var(--ink-2); }
 .hero-contact a { font-weight: 600; white-space: nowrap; }
-.hero-faces { margin: 0; }
-.faces-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.faces-grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 18%; border-radius: 6px; background: var(--tide); }
-.hero-faces figcaption { margin-top: 12px; font-size: 0.9375rem; color: var(--ink-2); }
+/* First-screen roster: the physicians, named, in one calm panel that matches the height of the copy beside it. */
+.roster { display: flex; flex-direction: column; padding: 32px 32px 28px; border-radius: 14px; background: var(--ink); color: #fff; }
+.roster-kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); }
+.roster-title { margin-top: 10px; font-size: 1.75rem; font-weight: 700; line-height: 1.12; color: #fff; }
+.roster-list { display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 4px; margin-top: 24px; }
+.roster-list li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid rgb(255 255 255 / 0.12); }
+.roster-list img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: center 16%; background: #17414d; box-shadow: 0 0 0 2px rgb(255 255 255 / 0.16); }
+.roster-name { font-family: var(--display); font-size: 1.125rem; font-weight: 700; line-height: 1.25; color: #fff; }
+.roster-line { margin-top: 2px; font-size: 0.9375rem; line-height: 1.4; color: #b9cfd4; }
+.roster-foot { margin-top: 8px; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.12); font-size: 0.9375rem; line-height: 1.5; color: #b9cfd4; }
+.roster-foot a { color: #fff; font-weight: 600; white-space: nowrap; }
+.roster-foot a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .facts > div { padding: 20px 24px 22px 0; }
 .facts > div + div { padding-left: 24px; border-left: 1px solid var(--line); }
@@ -239,7 +247,6 @@ address { font-style: normal; }
   .staff-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .faces-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .section { padding: 80px 0; }
 }
 @media (max-width: 760px) {
@@ -247,7 +254,6 @@ address { font-style: normal; }
   .standfirst { font-size: 1.0625rem; }
   .doors { grid-template-columns: minmax(0, 1fr); }
   .door .btn { width: 100%; }
-  .faces-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 40px; }
   .facts > div { padding: 16px 12px 16px 0; }
   .facts > div + div { padding-left: 0; border-left: 0; }
